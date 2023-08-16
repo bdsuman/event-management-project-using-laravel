@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="{{ asset('frontend/img/favicon.ico')}}">
-<title>Event-Management-Home</title>
+<title>Event Management </title>
 <!-- Bootstrap core CSS -->
 <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Fonts -->
