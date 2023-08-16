@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Event-Management</title>
-    <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
-    <link href="{{asset('backend/css/bootstrap.css')}}" rel="stylesheet" />
-    <link href="{{asset('backend/css/animate.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('backend/css/fontawesome.css')}}" rel="stylesheet" />
-    <link href="{{asset('backend/css/style.css')}}" rel="stylesheet" />
-    <link href="{{asset('backend/css/toastify.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('backend/js/toastify-js.js')}}"></script>
-    <script src="{{asset('backend/js/axios.min.js')}}"></script>
-    <script src="{{asset('backend/js/config.js')}}"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="{{ asset('frontend/img/favicon.ico')}}">
+<title>Event-Management-Home</title>
+<!-- Bootstrap core CSS -->
+<link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{{ asset('frontend/css/mediumish.css')}}" rel="stylesheet">
 </head>
-
 <body>
-
-<div id="loader" class="LoadingOverlay d-none">
-<div class="Line-Progress">
-    <div class="indeterminate"></div>
-</div>
-</div>
-
+@include('frontend.components.home.nav')
 <div>
     @yield('content')
 </div>
+
 <script>
 
 </script>
 
-<script src="{{asset('backend/js/bootstrap.bundle.js')}}"></script>
 
+</div>
+<!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/ie10-viewport-bug-workaround.js') }}"></script>
 </body>
 </html>

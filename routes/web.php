@@ -5,6 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',function(){
-    return 'FrontEnd';
+    return view('frontend.pages.dashboard.index-page');
 });
 
