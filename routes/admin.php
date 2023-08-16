@@ -1,11 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+
 
 // Web API Routes
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
@@ -27,8 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/userProfile',[UserController::class,'ProfilePage']);
    
     Route::get('/categoryPage',[CategoryController::class,'CategoryPage']);
-    Route::get('/incomePage',[IncomeController::class,'IncomePage']);
-    Route::get('/expensePage',[ExpenseController::class,'ExpensePage']);
+    Route::get('/eventPage',[EventController::class,'EventPage']);
     Route::get('/reportPage',[ReportController::class,'index']);
    
 
@@ -43,19 +42,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post("/update-category",[CategoryController::class,'CategoryUpdate']);
     Route::post("/category-by-id",[CategoryController::class,'CategoryByID']);
 
-    // Income API
-    Route::post("/create-income",[IncomeController::class,'IncomeCreate']);
-    Route::get("/list-income",[IncomeController::class,'IncomeList']);
-    Route::post("/delete-income",[IncomeController::class,'IncomeDelete']);
-    Route::post("/update-income",[IncomeController::class,'IncomeUpdate']);
-    Route::post("/income-by-id",[IncomeController::class,'IncomeByID']);
-
-    // Expense API
-    Route::post("/create-expense",[ExpenseController::class,'ExpenseCreate']);
-    Route::get("/list-expense",[ExpenseController::class,'ExpenseList']);
-    Route::post("/delete-expense",[ExpenseController::class,'ExpenseDelete']);
-    Route::post("/update-expense",[ExpenseController::class,'ExpenseUpdate']);
-    Route::post("/expense-by-id",[ExpenseController::class,'ExpenseByID']);
-
+    // Event API
+    Route::post("/create-event",[EventController::class,'EventCreate']);
+    Route::get("/list-event",[EventController::class,'EventList']);
+    Route::post("/delete-event",[EventController::class,'EventDelete']);
+    Route::post("/update-event",[EventController::class,'EventUpdate']);
+    Route::post("/event-by-id",[EventController::class,'EventByID']);
 
 });

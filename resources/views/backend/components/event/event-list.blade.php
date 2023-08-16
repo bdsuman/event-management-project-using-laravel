@@ -4,7 +4,7 @@
         <div class="card px-5 py-5">
             <div class="row justify-content-between ">
                 <div class="align-items-center col">
-                    <h6>Expense List</h6>
+                    <h6>Event List</h6>
                 </div>
                 <div class="align-items-center col">
                     <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0 btn-sm bg-gradient-primary">Create</button>
@@ -42,7 +42,7 @@ async function getList() {
 
 
     showLoader();
-    let res=await axios.get("/list-expense");
+    let res=await axios.get("/list-event");
     hideLoader();
 
     let tableList=$("#tableList");

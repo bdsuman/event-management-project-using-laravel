@@ -2,19 +2,23 @@
     <div class="modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Create Income</h6>
+                    <h6 class="modal-title" id="exampleModalLabel">Create Event</h6>
                 </div>
                 <div class="modal-body">
                     <form id="save-form">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12 p-1">
+                            <div class="col-4 p-1">
                                 <label class="form-label">Date *</label>
-                                <input type="date" class="form-control" id="incomeDate">
+                                <input type="date" class="form-control" id="eventDate">
                             </div>
-                            <div class="col-12 p-1">
-                                <label class="form-label">Type of Income *</label>
-                                <select name="type" id="incomeType" class="form-control">
+                            <div class="col-4 p-1">
+                                <label class="form-label">Time *</label>
+                                <input type="time" class="form-control" id="eventTime">
+                            </div>
+                            <div class="col-4 p-1">
+                                <label class="form-label">Category *</label>
+                                <select name="type" id="eventType" class="form-control">
                                     <option value="">--select--</option>
                                     @forelse ($categories as $categorie)
                                         <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
@@ -25,12 +29,20 @@
                                 </select>
                             </div>
                             <div class="col-12 p-1">
-                                <label class="form-label">Amount *</label>
-                                <input type="text" class="form-control" id="incomeAmount">
+                                <label class="form-label">Title *</label>
+                                <input type="text" class="form-control" id="eventTitle">
                             </div>
                             <div class="col-12 p-1">
                                 <label class="form-label">Description </label>
-                                <textarea type="text" class="form-control" id="incomeDescription"></textarea>
+                                <textarea type="text" class="form-control" id="eventDescription"></textarea>
+                            </div>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Location *</label>
+                                <input type="text" class="form-control" id="eventLocation">
+                            </div>
+                            <div class="col-12 p-1">
+                                <label class="form-label">Thumbnail *</label>
+                                <input type="file" class="form-control" id="eventImage">
                             </div>
                         </div>
                     </div>
@@ -49,16 +61,16 @@
 
     async function Save() {
 
-        let incomeDate = document.getElementById('incomeDate').value;
-        let incomeType = document.getElementById('incomeType').value;
-        let incomeAmount = document.getElementById('incomeAmount').value;
-        let incomeDescription = document.getElementById('incomeDescription').value;
-        //alert(isNaN(parseFloat(incomeAmount)))
-        if (incomeDate.length === 0) {
+        let eventDate = document.getElementById('eventDate').value;
+        let eventType = document.getElementById('eventType').value;
+        let eventAmount = document.getElementById('eventAmount').value;
+        let eventDescription = document.getElementById('eventDescription').value;
+        //alert(isNaN(parseFloat(eventAmount)))
+        if (eventDate.length === 0) {
             errorToast("Date Required !")
-        }else if (incomeType.length === 0) {
+        }else if (eventType.length === 0) {
             errorToast("Income Type Required !")
-        }else if (incomeAmount.length === 0 || isNaN(parseFloat(incomeAmount))) {
+        }else if (eventAmount.length === 0 || isNaN(parseFloat(eventAmount))) {
             errorToast("Income Amount Required !")
         }
         else {
@@ -66,7 +78,7 @@
             document.getElementById('modal-close').click();
 
             showLoader();
-            let res = await axios.post("/create-income",{date:incomeDate,amount:incomeAmount,description:incomeDescription,categorie_id:incomeType})
+            let res = await axios.post("/create-event",{date:eventDate,amount:eventAmount,description:eventDescription,categorie_id:eventType})
             hideLoader();
 
             if(res.status===201){
