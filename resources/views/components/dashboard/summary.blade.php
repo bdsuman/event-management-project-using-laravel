@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow float-end border-radius-md">
-                                <img class="w-100 " src="{{asset('images/icon.svg')}}"/>
+                                <img class="w-100 " src="{{asset('backend/images/icon.svg')}}"/>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow float-end border-radius-md">
-                                <img class="w-100 " src="{{asset('images/icon.svg')}}"/>
+                                <img class="w-100 " src="{{asset('backend/images/icon.svg')}}"/>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow float-end border-radius-md">
-                                <img class="w-100 " src="{{asset('images/icon.svg')}}"/>
+                                <img class="w-100 " src="{{asset('backend/images/icon.svg')}}"/>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow float-end border-radius-md">
-                                <img class="w-100 " src="{{asset('images/icon.svg')}}"/>
+                                <img class="w-100 " src="{{asset('backend/images/icon.svg')}}"/>
                             </div>
                         </div>
                     </div>

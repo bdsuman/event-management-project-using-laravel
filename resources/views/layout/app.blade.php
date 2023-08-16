@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Income-Expense-Tracker</title>
+    <title>Event-Management</title>
     <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/toastify.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('js/toastify-js.js')}}"></script>
-    <script src="{{asset('js/axios.min.js')}}"></script>
-    <script src="{{asset('js/config.js')}}"></script>
+    <link href="{{asset('backend/css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/css/animate.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/css/fontawesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/css/toastify.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('backend/js/toastify-js.js')}}"></script>
+    <script src="{{asset('backend/js/axios.min.js')}}"></script>
+    <script src="{{asset('backend/js/config.js')}}"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 
 </script>
 
-<script src="{{asset('js/bootstrap.bundle.js')}}"></script>
+<script src="{{asset('backend/js/bootstrap.bundle.js')}}"></script>
 
 </body>
 </html>
