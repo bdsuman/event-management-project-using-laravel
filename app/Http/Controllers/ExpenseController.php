@@ -10,7 +10,7 @@ class ExpenseController extends Controller
 {
     function ExpensePage(){
         $categories = Category::where('type', 'Expense')->select('id','name')->orderBy('name', 'asc')->get();
-        return view('pages.dashboard.expense-page',compact('categories'));
+        return view('backend.pages.dashboard.expense-page',compact('categories'));
     }
 
     function ExpenseList(Request $request){

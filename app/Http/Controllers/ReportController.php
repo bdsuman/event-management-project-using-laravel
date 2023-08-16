@@ -70,7 +70,7 @@ class ReportController extends Controller
         $expenses=$expenses->get();
        
         $categories= Category::where('user_id',$user_id)->get();
-        return view('pages.dashboard.report-page',compact('incomes','expenses','categories','status'));
+        return view('backend.pages.dashboard.report-page',compact('incomes','expenses','categories','status'));
     }
 
 }

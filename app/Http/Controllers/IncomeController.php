@@ -11,7 +11,7 @@ class IncomeController extends Controller
 {
     function IncomePage(){
         $categories = Category::where('type', 'income')->select('id','name')->orderBy('name', 'asc')->get();
-        return view('pages.dashboard.income-page',compact('categories'));
+        return view('backend.pages.dashboard.income-page',compact('categories'));
     }
 
     function IncomeList(Request $request){

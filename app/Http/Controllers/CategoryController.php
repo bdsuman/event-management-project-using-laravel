@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
 
     function CategoryPage(){
-        return view('pages.dashboard.category-page');
+        return view('backend.pages.dashboard.category-page');
     }
 
     function CategoryList(Request $request){

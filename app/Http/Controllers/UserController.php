@@ -14,25 +14,25 @@ class UserController extends Controller
 {
 
     function LoginPage():View{
-        return view('pages.auth.login-page');
+        return view('backend.pages.auth.login-page');
     }
 
     function RegistrationPage():View{
-        return view('pages.auth.registration-page');
+        return view('backend.pages.auth.registration-page');
     }
     function SendOtpPage():View{
-        return view('pages.auth.send-otp-page');
+        return view('backend.pages.auth.send-otp-page');
     }
     function VerifyOTPPage():View{
-        return view('pages.auth.verify-otp-page');
+        return view('backend.pages.auth.verify-otp-page');
     }
 
     function ResetPasswordPage():View{
-        return view('pages.auth.reset-pass-page');
+        return view('backend.pages.auth.reset-pass-page');
     }
 
     function ProfilePage():View{
-        return view('pages.dashboard.profile-page');
+        return view('backend.pages.dashboard.profile-page');
     }
 
 
