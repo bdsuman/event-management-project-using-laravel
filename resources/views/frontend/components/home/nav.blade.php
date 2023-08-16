@@ -16,12 +16,15 @@
                 <li class="nav-item active">
                 <a class="nav-link" href="{{ url('/') }}">Stories <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                 <a class="nav-link" href="post.html">Post</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="author.html">Author</a>
-                </li>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Author</a>
+                </li> 
             </ul>
             <!-- End Menu -->
             <!-- Begin Search -->
