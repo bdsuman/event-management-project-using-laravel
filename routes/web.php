@@ -2,11 +2,11 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 
-Route::get('/',function(){
-    return view('frontend.pages.index-page');
-});
+Route::get('/',[HomeController::class,'IndexPage']);
+
 Route::get('/post{id?}',function(){
     return view('frontend.pages.post-page');
 });
