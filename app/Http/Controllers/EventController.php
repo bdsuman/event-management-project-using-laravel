@@ -20,12 +20,27 @@ class EventController extends Controller
 
     function EventCreate(Request $request){
         $user_id=auth()->id();
+        // Prepare File Name & Path
+        $img=$request->file('image');
+
+        $t=time();
+        $file_name=$img->getClientOriginalName();
+        $file_ext=$img->getClientOriginalExtension();
+        $img_name="{$user_id}-{$t}.{$file_ext}";
+        $img_url="uploads/{$img_name}";
+
+        // Upload File
+        $img->move(public_path('uploads'),$img_name);
         return Event::create([
-            'date'=>$request->input('date'),
-            'amount'=>$request->input('amount'),
+            'image'=> $img_url,
+            'type'=>$request->input('type'),
+            'title'=>$request->input('title'),
             'description'=>$request->input('description'),
-            'categorie_id'=>$request->input('categorie_id'),
-            'user_id'=>$user_id
+            'date'=>$request->input('date'),
+            'time'=>$request->input('time'),
+            'location'=>$request->input('location'),
+            'user_id'=>$user_id,
+            'categorie_id'=>$request->input('categorie_id')
         ]);
     }
 
