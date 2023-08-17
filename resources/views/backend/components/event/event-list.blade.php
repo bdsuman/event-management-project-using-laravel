@@ -18,7 +18,7 @@
                     <th>No</th>
                     <th>Date</th>
                     <th>Category</th>
-                    <th>Amount</th>
+                    <th>Title</th>
                     <th>Description</th>
                     <th>Action</th>
                 </tr>
@@ -57,11 +57,11 @@ async function getList() {
                     <td>${index+1}</td>
                     <td>${item['date']}</td>
                     <td>${item['category']['name']}</td>
-                    <td>${item['amount']}</td>
+                    <td>${item['title']}</td>
                     <td>${item['description']??''}</td>
                     <td>
-                        <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
-                        <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
+                        <button data-path="${item['image']}" data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                        <button data-path="${item['image']}" data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`
         tableList.append(row)
@@ -77,8 +77,10 @@ async function getList() {
 
     $('.deleteBtn').on('click',function () {
         let id= $(this).data('id');
+        let image= $(this).data('path');
         $("#delete-modal").modal('show');
         $("#deleteID").val(id);
+        $("#deleteFilePath").val(image);
     })
 
     new DataTable('#tableData',{
