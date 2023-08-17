@@ -13,13 +13,13 @@
                         <input type="date" class="form-control" id="toDate" name="toDate">
                     </div>
                     <div class="col-4 p-1">
-                        <label class="form-label">Type of Income /Expense </label>
-                        <select name="type" id="type" class="form-control">
+                        <label class="form-label">Event </label>
+                        <select name="event_id" id="id" class="form-control">
                             <option value="">--select--</option>
-                            @forelse ($categories as $categorie)
-                                <option value="{{ $categorie->id }}">{{ $categorie->type }} - {{ $categorie->name }}</option>
+                            @forelse ($events as $item)
+                                <option value="{{ $item->id }}">{{ $item->title }}</option>
                             @empty
-                                <option value="Income">No Category Found!</option>
+                                <option value="Income">No Event Found!</option>
                             @endforelse
                             
                         </select>
@@ -34,7 +34,7 @@
             </form>
             <div class="row justify-content-between ">
                 <div class="align-items-center col">
-                    <h6>Income / Expense Calculation</h6>
+                    <h6>Event Registration List</h6>
                 </div>
                 <div class="align-items-center col">
                     <button onclick="printPage('print');" class="float-end btn m-0 btn-sm bg-gradient-success">Print</button>
@@ -51,109 +51,43 @@
                 <table class="table  table-flush">
                     <thead>
                     <tr class="bg-light">
-                        <th>Income</th>
-                        <th>Expense</th>
+                        <th>Sl</th>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <table class="table  table-flush">
-                                    <thead>
-                                    <tr class="bg-light">
-                                        <th>No</th>
-                                        <th>Date</th>
-                                        <th>Category</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $totalIncome = 0;
-                                        @endphp
-                                        @forelse ($incomes as $key=>$income )
-                                            @php
-                                                $totalIncome+=$income->amount;
-                                            @endphp
-                                            <tr>
-                                                <td>{{ ++$key }}</td>
-                                                <td>{{ date('d M, Y',strtotime($income->date)) }}</td>
-                                                <td>{{ $income->category->name }}</td>
-                                                <td align="right">{{ number_format($income->amount,2) }}</td>
-                                            </tr>
-                                                 
-                                        @empty
-                                            <tr>
-                                                <td colspan="4">
-                                                    <h3>No Income Found</h3>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="bg-dark" align="right" style="font-weight: bold; color:white;" >
-                                            <td colspan="3" >Tolal</td>
-                                            <td>{{ number_format($totalIncome,2)  }}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </td>
-                            <td>
-                                <table class="table  table-flush">
-                                    <thead>
-                                    <tr class="bg-light">
-                                        <th>No</th>
-                                        <th>Date</th>
-                                        <th>Category</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $totalExpense = 0;
-                                        @endphp
-                                        @forelse ($expenses as $key=>$expense )
-                                            @php
-                                                $totalExpense+=$expense->amount;
-                                            @endphp
-                                            <tr>
-                                                <td>{{ ++$key }}</td>
-                                                <td>{{ date('d M, Y',strtotime($expense->date)) }}</td>
-                                                <td>{{ $expense->category->name }}</td>
-                                                <td align="right">{{ number_format($expense->amount,2) }}</td>
-                                            </tr>
-                                                 
-                                        @empty
-                                            <tr>
-                                                <td colspan="4">
-                                                    <h3>No Expense Found</h3>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="bg-dark" align="right" style="font-weight: bold; color:white;" >
-                                            <td colspan="3" >Tolal</td>
-                                            <td>{{ number_format($totalExpense,2)  }}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </td>
-                        </tr>
+                        @forelse ($registrations as $key=>$data )
+                            <tr>
+                                <td>{{ ++$key; }}</td>
+                                <td>{{ App\Helper\Helper::dateCheck($data->date) }}</td>
+                                <td>{{ $data->event->title }}</td>
+                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->mobile }}</td>
+                                <td>{{ $data->email }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6">
+                                    <h2 style="color:red;">No Record Found!</h2>
+                                </td>
+                            </tr>
+                        @endforelse
+                        
                     </tbody>
-                    @php
-                        $restMoney = 0;
-                        $restMoney = $totalIncome-$totalExpense;
-                    @endphp
+                 
                     <tfoot>
-                        <tr class="bg-dark"  style="font-weight: bold; color:white;">
+                        {{-- <tr class="bg-dark"  style="font-weight: bold; color:white;">
                             <td align="right">
-                                Net Income
+                                Total
                             </td>
                             <td>
-                                {{ number_format($restMoney,2) }}
+                               
                             </td>
-                        </tr>
+                        </tr> --}}
                     </tfoot>
                 </table>
             </div>

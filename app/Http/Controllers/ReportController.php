@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Income;
 use App\Models\Category;
-use App\Models\Expense;
 use Illuminate\Http\Request;
 use App\Helper\Helper;
+use App\Models\Event;
+use App\Models\Registration;
+
 class ReportController extends Controller
 {
 
@@ -15,42 +16,40 @@ class ReportController extends Controller
         $status='';
         $from = $request->fromDate;
         $to = $request->toDate;
-        $type = $request->type;
+        $event_id = $request->event_id;
         $check=0;
            
         
         $user_id=auth()->id();
-        $incomes=Income::with('category')->where('user_id',$user_id);
-        $expenses=Expense::with('category')->where('user_id',$user_id);
-        if(!empty($type)){
+        $registrations=Registration::with('event')->where('user_id',$user_id);
+        if(!empty($event_id)){
             $check=1;
-            $catogory = Category::find($type);
-            $incomes->where('categorie_id',$type);
-            $expenses->where('categorie_id',$type);
-            $status=$status.'Type : '. $catogory->name;
+            $event = Event::find($event_id);
+            $registrations->where('event_id',$event_id);
+           
+            $status=$status.'Event : '. $event->name;
         }
             /**
              * Only To date search
              */
         if(!empty($to) && empty($from)){  
-            $incomes->where('date',$to);
-            $expenses->where('date',$to);
+            $registrations->where('date','<=',$to);
+            
             $status=$status.' To Date: '.Helper::dateCheck($to);
         }
             /**
              * Only From date search
              */     
         if(empty($to) && !empty($from)){  
-            $incomes->where('date',$from);
-            $expenses->where('date',$from);
+            $registrations->where('date','>=',$from);
             $status=$status.' From Date: '.Helper::dateCheck($from);
         }
             /**
              * To & From date search
              */
             if(!empty($to) && !empty($from)){  
-                $incomes->where('date','>=',$from)->where('date','<=',$to);
-                $expenses->where('date','>=',$from)->where('date','<=',$to);
+                $registrations->where('date','>=',$from)->where('date','<=',$to);
+             
                     if($from==$to){
                         $status=$status.' Date: '.Helper::dateCheck($from);
                     }else{
@@ -62,15 +61,14 @@ class ReportController extends Controller
              */
             $date = date('Y-m-d');
             if(empty($to) && empty($from) && $check==0){  
-                $incomes->where('date',$date);
-                $expenses->where('date',$date);
+                $registrations->where('date',$date);
+              
                 $status=$status.' Today : '.Helper::dateCheck($date);
             }
-        $incomes=$incomes->get();
-        $expenses=$expenses->get();
+        $registrations=$registrations->get();
        
-        $categories= Category::where('user_id',$user_id)->get();
-        return view('backend.pages.dashboard.report-page',compact('incomes','expenses','categories','status'));
+        $events= Event::where('user_id',$user_id)->get();
+        return view('backend.pages.dashboard.report-page',compact('events','registrations','status'));
     }
 
 }

@@ -28,6 +28,7 @@ class HomeController extends Controller
             'email'=>$request->input('email'),
             'remark'=>$request->input('remark'),
             'event_id'=>$request->input('event_id'),
+            'user_id'=>$request->input('user_id')
         ]);
 
         return redirect()->back()->with('success', 'Your Registration Confirm'); 

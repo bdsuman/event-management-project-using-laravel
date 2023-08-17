@@ -13,6 +13,7 @@
                         <label class="form-label" for="name">Name * </label>
                         <input type="text" id="name" name="name" class="form-control" placeholder="Name"/>
                         <input type="hidden" id="event_id" name="event_id" value="{{ $post->id }}"/>
+                        <input type="hidden" id="user_id" name="user_id" value="{{ $post->user_id }}"/>
                         <label class="form-label" for="mobile">Mobile</label>
                         <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile" />
                         <label class="form-label" for="email">Email address</label>
