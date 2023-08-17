@@ -9,7 +9,8 @@ use Illuminate\View\View;
 class HomeController extends Controller
 {
     function IndexPage():View{
-        $featurEvents = Event::where()->inRandomOrder()->take(3)->get();
-        return view('frontend.pages.index-page',compact('featurEvents'));
+        $featurEvents = Event::where('type','Feature')->inRandomOrder()->take(4)->get();
+        $recentEvents = Event::where('type','Recent')->inRandomOrder()->latest()->paginate(6);
+        return view('frontend.pages.index-page',compact('featurEvents','recentEvents'));
     }
 }
