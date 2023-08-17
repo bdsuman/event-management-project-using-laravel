@@ -54,7 +54,13 @@
 					</div>
 				</div>
 				<!-- End Top Menta -->
-
+				@if (\Session::has('success'))
+					<div class="alert alert-success">
+						<ul>
+							<li>{!! \Session::get('success') !!}</li>
+						</ul>
+					</div>
+				@endif
 				<h1 class="posttitle">{{ $post->user->title }}</h1>
 
 			</div>

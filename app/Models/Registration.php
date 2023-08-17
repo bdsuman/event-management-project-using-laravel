@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Registration extends Model
 {
+    protected $fillable=['name','mobile','email','remark','event_id'];
+    
     function event():BelongsTo{
         return $this->belongsTo(Event::class);
     }

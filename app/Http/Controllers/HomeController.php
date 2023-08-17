@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Registration;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,5 +20,16 @@ class HomeController extends Controller
         $post=Event::find($id);
         $raletedEvents = Event::where('type','Recent')->where('categorie_id',$post->categorie_id)->inRandomOrder()->take(3)->get();
         return view('frontend.pages.post-page',compact('post','raletedEvents'));
+    }
+    function EventRegistration (Request $request){
+       Registration::create([
+            'name'=>$request->input('name'),
+            'mobile'=>$request->input('mobile'),
+            'email'=>$request->input('email'),
+            'remark'=>$request->input('remark'),
+            'event_id'=>$request->input('event_id'),
+        ]);
+
+        return redirect()->back()->with('success', 'Your Registration Confirm'); 
     }
 }
