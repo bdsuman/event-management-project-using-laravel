@@ -32,6 +32,9 @@
             @endforeach
            
         </div>
+        
+            {{ $recentEvents->links()  }}
+       
         </section>
         <!-- End List Posts
         ================================================== -->
